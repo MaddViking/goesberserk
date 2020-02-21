@@ -1,0 +1,197 @@
+/*#             TRAINING COMMENT SECTION              #*/
+
+/*-##################-SPECIFICITY-#####################-*
+   SPECIFICITY IN ORDER OF POWER, LEAST TO MOST POWER:  
+      1. Element Selectors,   2. Class Selectors        
+      3. ID Selectors         4. Inline Styling         
+   ---------------------------------------------------
+   A: Classes are for use in many things,, kind of like 
+      a blueprint. ID is for use just once, for when an 
+      element is unique on a page. Example: About-Me
+      is listed only once on the page, so use ID.
+*-####################################################-*/
+
+/*-################-PSEUDO SELECTORS-##################-*
+   Pseudo-selectors are used when someething happens 
+   on a page. They are identified by a colon (:) placed
+   just after a CSS selectors. They are used to select
+   elements based on the element's attributes.
+   ---------------------------------------------------
+   :hover is an example of a pseudo selector. Applied
+   to the H2 element, this makes every H2 change color
+   on hover. Specificity still applies, so a class or 
+   ID will override the pseudo applied to an element
+   selector.
+   ---------------------------------------------------
+      FIRST / LAST / NTH-CHILD PSEUDO-SELECTORS
+   Used in lists; for example - li:last-child, refers 
+   to the last child in the parent element. You will
+   put the pseudo-selector ON the parent element, and
+   it refers to the CHILD element inside the parent.
+   The nth-child selector lets you choose the number
+   it applies to, as in li:nth-child(3).
+   There are also other variants, such as nth-last.
+   These count from the bottom. Ex: nth-last-child(3),
+   and nth-last-of-type(2).
+   ---------------------------------------------------
+            ONLY CHILD PSEUDO-SELECTORS
+   Applies to elements with only one child. So, it will 
+   look for every li that is the only child of its parent,
+   and apply there. It will not apply to any element that
+   has multiple children. 
+   ---------------------------------------------------
+                     ANCHOR TAGS
+   An example of the anchor tag is <a href="#">Text</a>
+   Two main pseudo-selectors for the anchor tag are:
+   1. :link, and 2. :visited. These change the colors
+   of the anchor based on if the link has been visited,                     
+   or is unvisited.
+   You can here use elements, or classes, or ID's.
+   Other examples of selectors for anchor tags are
+   :hover and :active
+*-####################################################-*/
+
+/*-###############-ADVANCED SELECTORS-#################-*
+   These are not used very commonly, but you can do a
+   lot with them. There are a large number of advanced
+   selectors, grouped in two categories.
+   These selectors often contain as many as three
+   elements in one single selector.
+   ---------------------------------------------------
+               BASIC ADVANCED SELECTORS
+   1. Adjacent Sibling Selector: 
+      Selects every single element that directly 
+      follows another element.
+      Example: Every anchor tag that comes directly
+      after a H2 element. Syntax: h2 + a {color:red;}
+      
+   2. General Sibling Selector / combinator: 
+      Looks for elements directly following another, 
+      except they also must be sharing the samde parent.
+      Example: Style every button which has a
+      text area, where the buttons share a parent.
+      Syntax: textarea ~ button {color: purple;}
+      
+   3. Child Selector:
+      The most basic selector in this group; selects
+      every single child of a certain element.
+      Example: Every single li element inside an ul.
+      Syntax: ul > li {color: red; }
+
+      Remember, specificity is at play with these.
+      The li item with the pseudo-selector is more
+      specific (powerful) than this general selector.
+      Higher specificity, has higher priority.
+
+   4. Descendent Selector: 
+      Formates any descendant that propagates back
+      up to a parent item. So, in a threaded list,
+      this will format the parent group ul or ol,
+      and every child in the hiearchy.
+      syntax: ul li {color: green;} Note that this
+      selector does not use a symbol between parent
+      and child element listed.
+
+      It is also equal in power to the child 
+      selector, so here, CSS order of appearance
+      sets the precedence. In CSS, items at the bottom
+      hold more power than items at the top.
+
+   There are more selectors, but these are most common.
+   ---------------------------------------------------
+               ATTRIBUTE SELECTORS
+   Formats an element based on the attribute of that
+   element, and the name given to the attribute.
+
+   An example of an attribute, is the src portion in
+   the img src tag, a class tag, ID tag and such.
+   The value of the attribute, is the name given
+   to the value. 
+
+   Syntax: h2[attr-value] {} You would not use the
+   selector in this way, but instead apply it to 
+   specific, named attributes, such as classes.
+   Example: h2[class-subtitle] {color: blue;} This 
+   would color all h2 elements with the class named
+   subtitle applied to them. 
+
+   Attribute selectors are powerful in that you
+   can combine
+   --------------------------------------------------
+         COMMON TYPES OF ATTRIBUTE SELECTORS
+
+   1. The img src selector: Will search the precise
+      characters given in the search path, per your
+      criteria.
+
+      EXACT MATCH;
+      Syntax: img[src="../img/"], note that with the
+      equal sign, it is looking for an exact match.
+
+      STARTS WTIH:
+      Usage of the caret symbol, img[src^="../img/"]
+      sets the search to starts with "img". Note that
+      when you select the folder name, "media", EVERY 
+      image in that folder will be formatted.
+
+      ENDS WITH:
+      To search for ends with img, use the dollar
+      sign. img[src$="../img/"]
+
+      CONTAINS (ANYWHERE):
+      To search for your term anywhere in the field,
+      use the wildcard symbol. img[src*="../img/"]
+
+      ----------------------------------------------
+   2. Whitespace Attribute Selector:
+      Searches for whitespace in attributes.
+      Syntax: h2[class~=article-subtitle] {} The
+      attribute would here only apply to the class, IF
+      it has whitespace in the name. Note: Could be good
+      for flagging bad formatting.
+
+      When you use the vertical sign |, it gets useful.
+      Syntax: h2[class|=article-subtitle] {}. This will
+      then look for and format any element containing
+      the explicit class article-subtitle, AND classes
+      containing the words subtitle OR article.
+
+   These attribute selectors are not commonly used in CSS,
+   but are very powerful, and good to know.
+
+*-####################################################-*/
+
+/*-#################-CSS PROPERTIES-###################-*
+   The property defines what is going to change. Is it
+   the color, the background, the font, the size, width,
+   thickness, or some other formatting.
+
+   The attribute defines what is changing, and the value
+   gives it that change. So, if color is the attribute,
+   then green is the change. Syntax: color: green;
+
+   Properties have two components: the actual property
+   itself, which is kind of a guideline on what is
+   changing;--followed by a colon,--and then the value
+   itself, which is going to be the type of change that
+   happens in our element.
+
+*-####################################################-*/
+
+/*-##############-THE CSS GENERAL RULE-################-*
+
+
+
+
+   ---------------------------------------------------
+
+
+
+
+   ---------------------------------------------------
+
+
+
+
+*-####################################################-*/
+
